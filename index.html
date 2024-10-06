@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cute Teddy Bear GIF</title>
+    <title>Welcome</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,17 +13,19 @@
     </audio>
 
     <div class="container">
-        <h1>Hi, Love!</h1>
-        <p>Click the button below</p>
-        <button onclick="showTeddy()">Click Me</button>
+        <h1>Hi, Love! 💖</h1>
+        <p>Click the button below to say goodnight</p>
+        <button onclick="goToMessagePage()">Click Me 🌙</button>
     </div>
 
-    <div id="teddy-container" class="teddy-container hidden">
-        <!-- Using the direct URL for the GIF -->
-        <img src="https://tenor.com/fMYyWva7NZh.gif" alt="Cute Teddy Bear" class="teddy-img">
-        <p class="message">Wag ka na magalit, kain ka na! 🧸🍴</p>
-    </div>
-
-    <script src="script.js"></script>
+    <script>
+        function goToMessagePage() {
+            const bgMusic = document.getElementById('bg-music');
+            if (bgMusic.paused) {
+                bgMusic.play();
+            }
+            window.location.href = "message.html";
+        }
+    </script>
 </body>
 </html>
