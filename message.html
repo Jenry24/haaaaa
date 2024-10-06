@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodnight Message</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div class="message-container">
+        <h1>Goodnight, Love! 💖</h1>
+        <p>I love you so much! 🌙</p>
+        <button id="goodnight-btn" onclick="showGoodnightMessage()">Goodnight Too 🌙</button>
+        <button id="love-btn" onclick="showLoveMessage()">I Love You Too ❤️</button>
+        <br><br>
+        <div id="extra-message" class="hidden"></div>
+        <div id="surprise-message" class="hidden">🌟 You're the best! I love you  Sleep kanaa bossing!! 🌟</div>
+        
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        function showGoodnightMessage() {
+            const extraMessage = document.getElementById('extra-message');
+            extraMessage.innerHTML = "<p>Goodnight! Sleep tight! 😴💤</p>";
+            extraMessage.classList.remove('hidden');
+
+            // Change button positions randomly
+            changeButtonPositions();
+        }
+
+        function showLoveMessage() {
+            const extraMessage = document.getElementById('extra-message');
+            extraMessage.classList.add('hidden'); // Hide previous messages
+            displaySurprise();
+        }
+
+        function displaySurprise() {
+            const surpriseMessage = document.getElementById('surprise-message');
+            surpriseMessage.classList.remove('hidden');
+            surpriseMessage.classList.add('animate'); // Add animation class
+
+            // Hide the surprise message after a few seconds
+            setTimeout(() => {
+                surpriseMessage.classList.add('hidden');
+                surpriseMessage.classList.remove('animate'); // Remove animation class
+            }, 5000); // Adjust time as needed (5000 ms = 5 seconds)
+        }
+
+        function changeButtonPositions() {
+            const buttons = document.querySelectorAll("button:not(#go-back-btn)"); // Exclude Go Back button
+            const container = document.querySelector(".message-container");
+
+            buttons.forEach(button => {
+                const randomX = Math.random() * (container.clientWidth - button.clientWidth);
+                const randomY = Math.random() * (container.clientHeight - button.clientHeight);
+
+                button.style.position = 'absolute';
+                button.style.left = `${randomX}px`;
+                button.style.top = `${randomY}px`;
+            });
+        }
+
+        const bgMusic = document.getElementById('bg-music');
+        bgMusic.play();
+    </script>
+</body>
+</html>
